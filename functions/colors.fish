@@ -19,10 +19,15 @@ function colors
         end
         set COL $colors[(math "($i + 1) / 2")]
         if test "$COL" != ""
+          echo -n " | "
           if test (math "($i + 1) % 2") -eq 1
+            set_color -o $COL
             set COL "-o $COL"
+          else
+            set_color $COL
           end
-          echo -n " | set_color $COL"
+          echo -n "set_color $COL"
+          set_color normal
         else
           echo -n " | "
         end
