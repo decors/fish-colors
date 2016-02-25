@@ -20,6 +20,10 @@ fisher install decors/fish-colors
 colors --aixterm
 ```
 
+![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot2.png)
+
 ```fish
 colors --256colors
 ```
+
+![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot3.png)
