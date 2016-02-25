@@ -7,6 +7,14 @@ function colors
             colors::aixterm
         case '--256colors'
             colors::256colors
+        case '--help'
+            echo 'Usage: colors [option]'
+            echo
+            echo 'Available Options:'
+            echo '  --help       Show this help'
+            echo '  --ansi       Display ANSI colors table (default option)'
+            echo '  --aixterm    Display aixterm high intensity colors table'
+            echo '  --256colors  Display 256 colors table'
         case '*'
             colors::ansi
     end
