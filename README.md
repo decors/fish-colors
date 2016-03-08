@@ -1,4 +1,4 @@
-# fish-colors
+# colors
 
 Display color tables script for fish-shell.
 
@@ -8,10 +8,16 @@ Display color tables script for fish-shell.
 
 ## Install
 
-With [Fisherman](https://github.com/fisherman/fisherman)
+[Fisherman](https://github.com/fisherman/fisherman)
 
 ```fish
 fisher install decors/fish-colors
+```
+
+[Oh My Fish](https://github.com/oh-my-fish/oh-my-fish)
+
+```fish
+omf install https://github.com/decors/fish-colors
 ```
 
 ## Options
