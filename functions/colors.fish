@@ -1,8 +1,8 @@
 function colors
     set option $argv[1]
     switch "$option"
-        case '--fish-colors'
-            colors::fish-colors
+        case '--fish'
+            colors::fish
         case '--ansi'
             colors::ansi
         case '--aixterm'
@@ -13,11 +13,11 @@ function colors
             echo 'Usage: colors [option]'
             echo
             echo 'Available Options:'
-            echo '  --help         Show this help'
-            echo '  --fish-colors  Display fish color examples'
-            echo '  --ansi         Display ANSI colors table (default option)'
-            echo '  --aixterm      Display aixterm high intensity colors table'
-            echo '  --256-colors   Display 256 colors table'
+            echo '  --help        Show this help'
+            echo '  --fish        Display fish color examples'
+            echo '  --ansi        Display ANSI colors table (default option)'
+            echo '  --aixterm     Display aixterm high intensity colors table'
+            echo '  --256-colors  Display 256 colors table'
         case ''
             colors::ansi
         case '*'
@@ -115,7 +115,7 @@ function colors::aixterm
     echo
 end
 
-function colors::fish-colors
+function colors::fish
 
     set -l desc_color "yellow --bold"
     
@@ -132,39 +132,33 @@ function colors::fish-colors
 
     printc "$desc_color" "\nValid commmand\n"
     dummy_prompt
-    printc "$fish_color_command" "command"
+    printc "$fish_color_command" "command\n"
 
-    printc "$desc_color" "\n\nInvalid commmand\n"
+    printc "$desc_color" "\nInvalid commmand\n"
     dummy_prompt
-    printc "$fish_color_error" "comaand"
+    printc "$fish_color_error" "comaand\n"
 
-    printc "$desc_color" "\n\nParameters (normal, valid path)\n"
+    printc "$desc_color" "\nParameters (normal, valid path)\n"
     dummy_prompt
     printc "$fish_color_command" "ls"
     printc "normal" " "
     printc "$fish_color_param" "-la"
     printc "normal" " "
-    set_color $fish_color_param; set_color $fish_color_valid_path; printf "/var/log/"
+    set_color $fish_color_param; set_color $fish_color_valid_path; printf "/var/log/\n"
 
-    printc "$desc_color" "\n\nParameters (quoted, match)\n"
+    printc "$desc_color" "\nParameters (quote)\n"
     dummy_prompt
     printc "$fish_color_command" "printf"
     printc "normal" " "
-    printc "$fish_color_quote" "\"%%s\\\n\""
-    printc "normal" " "
-    printc "$fish_color_match" "("
-    printc "$fish_color_command" "git"
-    printc "normal" " "
-    printc "$fish_color_param" "branch"
-    printc "$fish_color_match" ")"
+    printc "$fish_color_quote" "\"%%s\\\n\"\n"
 
-    printc "$desc_color" "\n\nAutosuggestion\n"
+    printc "$desc_color" "\nAutosuggestion\n"
     dummy_prompt
     printc "$fish_color_command" "curl"
     printc "normal" " "
-    printc "$fish_color_autosuggestion" "http://www.google.com/"
+    printc "$fish_color_autosuggestion" "http://www.google.com/\n"
 
-    printc "$desc_color" "\n\nCompletions\n"
+    printc "$desc_color" "\nCompletions\n"
     dummy_prompt
     printc "$fish_color_command" "fish\n"
     printc "$fish_pager_color_prefix" "fish"
@@ -179,6 +173,14 @@ function colors::fish-colors
     printc "$fish_pager_color_prefix" "fish"
     printc "$fish_pager_color_completion" "_indent\n"
     printc "$fish_pager_color_progress" "…and 16 more rows\n"
+
+    printc "$desc_color" "\nComments\n"
+    dummy_prompt
+    printc "$fish_color_command" "say"
+    printc "normal" " "
+    printc "$fish_color_param" "hello"
+    printc "normal" " "
+    printc "$fish_color_comment" "# Your Mac will speak\n"
 
     printc "normal" "\n"
 end
