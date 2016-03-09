@@ -1,8 +1,10 @@
 function colors
     set option $argv[1]
     switch "$option"
-        case '--fish'
-            colors::fish
+        case '--syntax-examples'
+            colors::syntax-examples
+        case '--syntax-variables'
+            colors::syntax-variables
         case '--ansi'
             colors::ansi
         case '--aixterm'
@@ -13,11 +15,12 @@ function colors
             echo 'Usage: colors [option]'
             echo
             echo 'Available Options:'
-            echo '  --help        Show this help'
-            echo '  --fish        Display fish color examples'
-            echo '  --ansi        Display ANSI colors table (default option)'
-            echo '  --aixterm     Display aixterm high intensity colors table'
-            echo '  --256-colors  Display 256 colors table'
+            echo '  --help              Show this help'
+            echo '  --syntax-examples   Display fish syntax color examples'
+            echo '  --syntax-variables  Display fish syntax color variables'
+            echo '  --ansi              Display ANSI colors table (default option)'
+            echo '  --aixterm           Display aixterm high intensity colors table'
+            echo '  --256-colors        Display 256 colors table'
         case ''
             colors::ansi
         case '*'
@@ -115,19 +118,13 @@ function colors::aixterm
     echo
 end
 
-function colors::fish
+function colors::syntax-examples
 
     set -l desc_color "yellow --bold"
-    
-    function printc -a color text
-        set_color normal
-        eval "set_color $color"
-        printf $text
-    end
 
     function dummy_prompt
-        set_color normal
-        printf "prompt > "
+        printc "$fish_color_cwd" "/h/foo"
+        printc normal " > "
     end
 
     printc "$desc_color" "\nValid commmand\n"
@@ -183,4 +180,36 @@ function colors::fish
     printc "$fish_color_comment" "# Your Mac will speak\n"
 
     printc "normal" "\n"
+end
+
+function colors::syntax-variables
+    printc "$fish_color_normal" "fish_color_normal\n"
+    printc "$fish_color_command" "fish_color_command\n"
+    printc "$fish_color_param" "fish_color_param\n"
+    printc "$fish_color_redirection" "fish_color_redirection\n"
+    printc "$fish_color_comment" "fish_color_comment\n"
+    printc "$fish_color_error" "fish_color_error\n"
+    printc "$fish_color_escape" "fish_color_escape\n"
+    printc "$fish_color_operator" "fish_color_operator\n"
+    printc "$fish_color_end" "fish_color_end\n"
+    printc "$fish_color_quote" "fish_color_quote\n"
+    printc "$fish_color_autosuggestion" "fish_color_autosuggestion\n"
+    printc "$fish_color_valid_path" "fish_color_valid_path\n"
+    printc "$fish_color_cwd" "fish_color_cwd\n"
+    printc "$fish_color_cwd_root" "fish_color_cwd_root\n"
+    printc "$fish_color_match" "fish_color_match\n"
+    printc "$fish_color_search_match" "fish_color_search_match\n"
+    printc "$fish_color_selection" "fish_color_selection\n"
+    printc "$fish_pager_color_prefix" "fish_pager_color_prefix\n"
+    printc "$fish_pager_color_completion" "fish_pager_color_completion\n"
+    printc "$fish_pager_color_description" "fish_pager_color_description\n"
+    printc "$fish_pager_color_progress" "fish_pager_color_progress\n"
+    printc "$fish_color_history_current" "fish_color_history_current\n"
+end
+
+function printc -a color text
+    set_color normal
+    set_color -b normal
+    eval "set_color $color"
+    printf $text
 end
