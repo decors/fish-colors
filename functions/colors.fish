@@ -1,10 +1,10 @@
 function colors
     set option $argv[1]
     switch "$option"
-        case '--syntax-examples'
-            colors::syntax-examples
-        case '--syntax-variables'
-            colors::syntax-variables
+        case '--examples'
+            colors::examples
+        case '--variables'
+            colors::variables
         case '--ansi'
             colors::ansi
         case '--aixterm'
@@ -15,12 +15,12 @@ function colors
             echo 'Usage: colors [option]'
             echo
             echo 'Available Options:'
-            echo '  --help              Show this help'
-            echo '  --syntax-examples   Display fish syntax color examples'
-            echo '  --syntax-variables  Display fish syntax color variables'
-            echo '  --ansi              Display ANSI colors table (default option)'
-            echo '  --aixterm           Display aixterm high intensity colors table'
-            echo '  --256-colors        Display 256 colors table'
+            echo '  --help        Show this help'
+            echo '  --examples    Display fish syntax highlighting examples'
+            echo '  --variables   Display fish syntax highlighting variables'
+            echo '  --ansi        Display ANSI colors table (default option)'
+            echo '  --aixterm     Display aixterm high intensity colors table'
+            echo '  --256-colors  Display 256 colors table'
         case ''
             colors::ansi
         case '*'
@@ -118,7 +118,7 @@ function colors::aixterm
     echo
 end
 
-function colors::syntax-examples
+function colors::examples
 
     set -l desc_color "yellow --bold"
 
@@ -220,7 +220,7 @@ function colors::syntax-examples
     __printc "normal" "\n"
 end
 
-function colors::syntax-variables
+function colors::variables
 
     function __print_variable -a color text
         set -l text (printf "%-30s : $color" $text)
