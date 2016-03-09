@@ -23,13 +23,13 @@ omf install https://github.com/decors/fish-colors
 ## Options
 
 ```fish
-colors --syntax-examples
+colors --examples
 ```
 
 ![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot4.png)
 
 ```fish
-colors --syntax-variables
+colors --variables
 ```
 
 ![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot5.png)
