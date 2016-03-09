@@ -122,94 +122,114 @@ function colors::syntax-examples
 
     set -l desc_color "yellow --bold"
 
-    function dummy_prompt
-        printc "$fish_color_cwd" "/h/foo"
-        printc normal " > "
+    function __dummy_prompt
+        __printc "$fish_color_cwd" "/h/foo"
+        __printc normal " > "
     end
 
-    printc "$desc_color" "\nValid commmand\n"
-    dummy_prompt
-    printc "$fish_color_command" "command\n"
+    __printc "$desc_color" "\nValid commmand\n"
+    __dummy_prompt
+    __printc "$fish_color_command" "command"
+    set_color -b normal; printf "\n"
 
-    printc "$desc_color" "\nInvalid commmand\n"
-    dummy_prompt
-    printc "$fish_color_error" "comaand\n"
+    __printc "$desc_color" "\nInvalid commmand\n"
+    __dummy_prompt
+    __printc "$fish_color_error" "comaand"
+    set_color -b normal; printf "\n"
 
-    printc "$desc_color" "\nParameters (normal, valid path)\n"
-    dummy_prompt
-    printc "$fish_color_command" "ls"
-    printc "normal" " "
-    printc "$fish_color_param" "-la"
-    printc "normal" " "
-    set_color $fish_color_param; set_color $fish_color_valid_path; printf "/var/log/\n"
+    __printc "$desc_color" "\nParameters (normal, valid path)\n"
+    __dummy_prompt
+    __printc "$fish_color_command" "ls"
+    __printc "normal" " "
+    __printc "$fish_color_param" "-la"
+    __printc "normal" " "
+    set_color $fish_color_param; set_color $fish_color_valid_path; printf "/var/log/"
+    set_color -b normal; printf "\n"
 
-    printc "$desc_color" "\nParameters (quote)\n"
-    dummy_prompt
-    printc "$fish_color_command" "printf"
-    printc "normal" " "
-    printc "$fish_color_quote" "\"%%s\\\n\"\n"
+    __printc "$desc_color" "\nParameters (quote)\n"
+    __dummy_prompt
+    __printc "$fish_color_command" "printf"
+    __printc "normal" " "
+    __printc "$fish_color_quote" "\"%%s\\\n\""
+    set_color -b normal; printf "\n"
 
-    printc "$desc_color" "\nAutosuggestion\n"
-    dummy_prompt
-    printc "$fish_color_command" "curl"
-    printc "normal" " "
-    printc "$fish_color_autosuggestion" "http://www.google.com/\n"
+    __printc "$desc_color" "\nAutosuggestion\n"
+    __dummy_prompt
+    __printc "$fish_color_command" "curl"
+    __printc "normal" " "
+    __printc "$fish_color_autosuggestion" "http://www.google.com/"
+    set_color -b normal; printf "\n"
 
-    printc "$desc_color" "\nCompletions\n"
-    dummy_prompt
-    printc "$fish_color_command" "fish\n"
-    printc "$fish_pager_color_prefix" "fish"
-    printc "normal" "                               "
-    printc "$fish_pager_color_description" "(Executable link, 901kB)\n"
-    printc "$fish_pager_color_prefix" "fish"
-    printc "$fish_pager_color_completion" "_config\n"
-    printc "$fish_pager_color_prefix" "fish"
-    printc "$fish_pager_color_completion" "_default_key_bindings"
-    printc "normal" "     "
-    printc "$fish_pager_color_description" "(Default (Emacs-like) key b…)\n"
-    printc "$fish_pager_color_prefix" "fish"
-    printc "$fish_pager_color_completion" "_indent\n"
-    printc "$fish_pager_color_progress" "…and 16 more rows\n"
+    __printc "$desc_color" "\nCompletions\n"
+    __dummy_prompt
+    __printc "$fish_color_command" "fish\n"
+    __printc "$fish_pager_color_prefix" "fish"
+    __printc "normal" "                               "
+    __printc "$fish_pager_color_description" "(Executable link, 901kB)"
+    set_color -b normal; printf "\n"
+    __printc "$fish_pager_color_prefix" "fish"
+    __printc "$fish_pager_color_completion" "_config"
+    set_color -b normal; printf "\n"
+    set_color $fish_color_search_match $fish_pager_color_completion
+    printf "fish"
+    __printc "$fish_color_search_match" "_default_key_bindings"
+    __printc "$fish_color_search_match" "     "
+    set_color $fish_color_search_match $fish_pager_color_description
+    printf "(Default (Emacs-like) key b…)"
+    set_color -b normal; printf "\n"
+    __printc "$fish_pager_color_prefix" "fish"
+    __printc "$fish_pager_color_completion" "_indent\n"
+    __printc "$fish_pager_color_progress" "…and 16 more rows"
+    set_color -b normal; printf "\n"
 
-    printc "$desc_color" "\nComments\n"
-    dummy_prompt
-    printc "$fish_color_command" "say"
-    printc "normal" " "
-    printc "$fish_color_param" "hello"
-    printc "normal" " "
-    printc "$fish_color_comment" "# Your Mac will speak\n"
+    __printc "$desc_color" "\nComments\n"
+    __dummy_prompt
+    __printc "$fish_color_command" "say"
+    __printc "normal" " "
+    __printc "$fish_color_param" "hello"
+    __printc "normal" " "
+    __printc "$fish_color_comment" "# Your Mac will speak"
+    set_color -b normal; printf "\n"
 
-    printc "normal" "\n"
+    __printc "normal" "\n"
 end
 
 function colors::syntax-variables
-    printc "$fish_color_normal" "fish_color_normal\n"
-    printc "$fish_color_command" "fish_color_command\n"
-    printc "$fish_color_param" "fish_color_param\n"
-    printc "$fish_color_redirection" "fish_color_redirection\n"
-    printc "$fish_color_comment" "fish_color_comment\n"
-    printc "$fish_color_error" "fish_color_error\n"
-    printc "$fish_color_escape" "fish_color_escape\n"
-    printc "$fish_color_operator" "fish_color_operator\n"
-    printc "$fish_color_end" "fish_color_end\n"
-    printc "$fish_color_quote" "fish_color_quote\n"
-    printc "$fish_color_autosuggestion" "fish_color_autosuggestion\n"
-    printc "$fish_color_valid_path" "fish_color_valid_path\n"
-    printc "$fish_color_cwd" "fish_color_cwd\n"
-    printc "$fish_color_cwd_root" "fish_color_cwd_root\n"
-    printc "$fish_color_match" "fish_color_match\n"
-    printc "$fish_color_search_match" "fish_color_search_match\n"
-    printc "$fish_color_selection" "fish_color_selection\n"
-    printc "$fish_pager_color_prefix" "fish_pager_color_prefix\n"
-    printc "$fish_pager_color_completion" "fish_pager_color_completion\n"
-    printc "$fish_pager_color_description" "fish_pager_color_description\n"
-    printc "$fish_pager_color_progress" "fish_pager_color_progress\n"
-    printc "$fish_color_history_current" "fish_color_history_current\n"
+
+    function __print_variable -a color text
+        set -l text (printf "%-30s : $color" $text)
+        __printc "$color" "$text"
+        set_color -b normal; printf "\n"
+    end
+
+    __printc "normal" "\n"
+    __print_variable "$fish_color_normal" "fish_color_normal"
+    __print_variable "$fish_color_command" "fish_color_command"
+    __print_variable "$fish_color_param" "fish_color_param"
+    __print_variable "$fish_color_redirection" "fish_color_redirection"
+    __print_variable "$fish_color_comment" "fish_color_comment"
+    __print_variable "$fish_color_error" "fish_color_error"
+    __print_variable "$fish_color_escape" "fish_color_escape"
+    __print_variable "$fish_color_operator" "fish_color_operator"
+    __print_variable "$fish_color_end" "fish_color_end"
+    __print_variable "$fish_color_quote" "fish_color_quote"
+    __print_variable "$fish_color_autosuggestion" "fish_color_autosuggestion"
+    __print_variable "$fish_color_valid_path" "fish_color_valid_path"
+    __print_variable "$fish_color_cwd" "fish_color_cwd"
+    __print_variable "$fish_color_cwd_root" "fish_color_cwd_root"
+    __print_variable "$fish_color_match" "fish_color_match"
+    __print_variable "$fish_color_search_match" "fish_color_search_match"
+    __print_variable "$fish_color_selection" "fish_color_selection"
+    __print_variable "$fish_pager_color_prefix" "fish_pager_color_prefix"
+    __print_variable "$fish_pager_color_completion" "fish_pager_color_completion"
+    __print_variable "$fish_pager_color_description" "fish_pager_color_description"
+    __print_variable "$fish_pager_color_progress" "fish_pager_color_progress"
+    __print_variable "$fish_color_history_current" "fish_color_history_current"
+    __printc "normal" "\n"
 end
 
-function printc -a color text
+function __printc -a color text
     set_color normal
-    set_color -b normal
     eval "set_color $color"
     printf $text
 end
