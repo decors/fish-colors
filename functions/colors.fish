@@ -170,15 +170,13 @@ function colors::syntax-examples
     __printc "$fish_pager_color_prefix" "fish"
     __printc "$fish_pager_color_completion" "_config"
     set_color -b normal; printf "\n"
-    set_color $fish_color_search_match $fish_pager_color_completion
+    set_color $fish_color_search_match; set_color --bold white
     printf "fish"
     __printc "$fish_color_search_match" "_default_key_bindings"
     __printc "$fish_color_search_match" "     "
     set_color $fish_color_search_match $fish_pager_color_description
     printf "(Default (Emacs-like) key b…)"
     set_color -b normal; printf "\n"
-    __printc "$fish_pager_color_prefix" "fish"
-    __printc "$fish_pager_color_completion" "_indent\n"
     __printc "$fish_pager_color_progress" "…and 16 more rows"
     set_color -b normal; printf "\n"
 
@@ -189,6 +187,34 @@ function colors::syntax-examples
     __printc "$fish_color_param" "hello"
     __printc "normal" " "
     __printc "$fish_color_comment" "# Your Mac will speak"
+    set_color -b normal; printf "\n"
+
+    __printc "$desc_color" "\nOperators (like '*' and '~'), Separators (like ';' and '&')\n"
+    __dummy_prompt
+    __printc "$fish_color_command" "mv"
+    __printc "normal" " "
+    __printc "$fish_color_param" "foo/"
+    __printc "$fish_color_operator" "*"
+    __printc "normal" " "
+    set_color $fish_color_param; set_color $fish_color_valid_path; printf "bar/"
+    __printc "$fish_color_end" ";"
+    set_color -b normal; printf "\n"
+
+    __printc "$desc_color" "\nRedirection\n"
+    __dummy_prompt
+    __printc "$fish_color_command" "brew"
+    __printc "normal" " "
+    __printc "$fish_color_param" "update"
+    __printc "normal" " "
+    __printc "$fish_color_redirection" "^"
+    __printc "normal" " "
+    __printc "$fish_color_redirection" "/dev/null"
+    set_color -b normal; printf "\n"
+
+    __printc "$desc_color" "\nRoot prompt CWD\n"
+    __printc "$fish_color_cwd_root" "/root"
+    __printc normal " # "
+    __printc "$fish_color_command" "foo"
     set_color -b normal; printf "\n"
 
     __printc "normal" "\n"
