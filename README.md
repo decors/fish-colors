@@ -1,6 +1,6 @@
 # colors
 
-Display color tables script for fish-shell.
+Display color examples.
 
 ![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot.png)
 
@@ -21,6 +21,19 @@ omf install https://github.com/decors/fish-colors
 ```
 
 ## Options
+
+```fish
+colors --syntax-examples
+```
+
+![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot4.png)
+
+```fish
+colors --syntax-variables
+```
+
+![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot5.png)
+
 
 ```fish
 colors --aixterm
