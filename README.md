@@ -1,6 +1,6 @@
 # colors
 
-Display color examples.
+Display color chart and examples.
 
 ![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot.png)
 
@@ -22,6 +22,8 @@ omf install https://github.com/decors/fish-colors
 
 ## Options
 
+### Syntax highlighting examples
+
 ```fish
 colors --examples
 ```
@@ -33,6 +35,16 @@ colors --variables
 ```
 
 ![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot5.png)
+
+see also https://fishshell.com/docs/current/index.html#variables-color
+
+### Color chart
+
+```fish
+colors # or `colors --ansi`
+```
+
+![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot.png)
 
 
 ```fish
