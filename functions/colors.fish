@@ -9,7 +9,7 @@ function colors
             colors::ansi
         case '--aixterm'
             colors::aixterm
-        case '--256-colors'
+        case '--256colors'
             colors::256-colors
         case '--help'
             echo 'Usage: colors [option]'
@@ -20,7 +20,7 @@ function colors
             echo '  --variables   Display fish syntax highlighting variables'
             echo '  --ansi        Display ANSI colors table (default option)'
             echo '  --aixterm     Display aixterm high intensity colors table'
-            echo '  --256-colors  Display 256 colors table'
+            echo '  --256colors  Display 256 colors table'
         case ''
             colors::ansi
         case '*'
