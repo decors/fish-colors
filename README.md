@@ -8,10 +8,10 @@ Display color chart and examples.
 
 ## Install
 
-[Fisherman](https://github.com/fisherman/fisherman)
+[Fisher](https://github.com/jorgebucaran/fisher)
 
 ```fish
-fisher install decors/fish-colors
+fisher add decors/fish-colors
 ```
 
 [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish)
@@ -58,3 +58,7 @@ colors --256colors
 ```
 
 ![](https://raw.githubusercontent.com/decors/various/master/images/colors-screenshot3.png)
+
+## License
+
+fish-colors is MIT licensed. See [LICENSE](LICENSE) file for details.
