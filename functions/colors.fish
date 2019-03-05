@@ -140,8 +140,8 @@ function colors::examples
     __printc "$desc_color" "\nParameters (normal, valid path)\n"
     __dummy_prompt
     __printc "$fish_color_command" "ls"
-    __printc "normal" " "
-    __printc "$fish_color_param" "-la"
+    #__printc "normal" " "
+    __printc "$fish_color_param" " -la"
     __printc "normal" " "
     set_color $fish_color_param; set_color $fish_color_valid_path; printf "/var/log/"
     set_color -b normal; printf "\n"
@@ -206,7 +206,7 @@ function colors::examples
     __printc "normal" " "
     __printc "$fish_color_param" "update"
     __printc "normal" " "
-    __printc "$fish_color_redirection" "^"
+    __printc "$fish_color_redirection" "2>"
     __printc "normal" " "
     __printc "$fish_color_redirection" "/dev/null"
     set_color -b normal; printf "\n"
@@ -251,11 +251,14 @@ function colors::variables
     __print_variable "$fish_pager_color_description" "fish_pager_color_description"
     __print_variable "$fish_pager_color_progress" "fish_pager_color_progress"
     __print_variable "$fish_color_history_current" "fish_color_history_current"
+    __print_variable "$fish_color_user" "fish_color_user"
+    __print_variable "$fish_color_host" "fish_color_host"
+    __print_variable "$fish_color_cancel" "fish_color_cancel"
     __printc "normal" "\n"
 end
 
 function __printc -a color text
     set_color normal
     eval "set_color $color"
-    printf $text
+    printf "$text"
 end
