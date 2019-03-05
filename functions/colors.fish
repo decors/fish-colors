@@ -124,41 +124,45 @@ function colors::examples
 
     function __dummy_prompt
         __printc "$fish_color_cwd" "/h/foo"
-        __printc normal " > "
+        __printc normal "> "
+    end
+
+    function __clear_newline
+        set_color -b normal; printf "\n"
     end
 
     __printc "$desc_color" "\nValid commmand\n"
     __dummy_prompt
     __printc "$fish_color_command" "command"
-    set_color -b normal; printf "\n"
+    __clear_newline
 
     __printc "$desc_color" "\nInvalid commmand\n"
     __dummy_prompt
     __printc "$fish_color_error" "comaand"
-    set_color -b normal; printf "\n"
+    __clear_newline
 
     __printc "$desc_color" "\nParameters (normal, valid path)\n"
     __dummy_prompt
-    __printc "$fish_color_command" "ls"
-    #__printc "normal" " "
-    __printc "$fish_color_param" " -la"
+    __printc "$fish_color_command" "git"
     __printc "normal" " "
-    set_color $fish_color_param; set_color $fish_color_valid_path; printf "/var/log/"
-    set_color -b normal; printf "\n"
+    __printc "$fish_color_param" "add"
+    __printc "normal" " "
+    set_color $fish_color_param; set_color $fish_color_valid_path; printf "spec/"
+    __clear_newline
 
     __printc "$desc_color" "\nParameters (quote)\n"
     __dummy_prompt
     __printc "$fish_color_command" "printf"
     __printc "normal" " "
     __printc "$fish_color_quote" "\"%%s\\\n\""
-    set_color -b normal; printf "\n"
+    __clear_newline
 
     __printc "$desc_color" "\nAutosuggestion\n"
     __dummy_prompt
     __printc "$fish_color_command" "curl"
     __printc "normal" " "
     __printc "$fish_color_autosuggestion" "http://www.google.com/"
-    set_color -b normal; printf "\n"
+    __clear_newline
 
     __printc "$desc_color" "\nCompletions\n"
     __dummy_prompt
@@ -166,19 +170,19 @@ function colors::examples
     __printc "$fish_pager_color_prefix" "fish"
     __printc "normal" "                               "
     __printc "$fish_pager_color_description" "(Executable link, 901kB)"
-    set_color -b normal; printf "\n"
+    __clear_newline
     __printc "$fish_pager_color_prefix" "fish"
     __printc "$fish_pager_color_completion" "_config"
-    set_color -b normal; printf "\n"
+    __clear_newline
     set_color $fish_color_search_match; set_color --bold white
     printf "fish"
     __printc "$fish_color_search_match" "_default_key_bindings"
     __printc "$fish_color_search_match" "     "
     set_color $fish_color_search_match $fish_pager_color_description
     printf "(Default (Emacs-like) key b…)"
-    set_color -b normal; printf "\n"
+    __clear_newline
     __printc "$fish_pager_color_progress" "…and 16 more rows"
-    set_color -b normal; printf "\n"
+    __clear_newline
 
     __printc "$desc_color" "\nComments\n"
     __dummy_prompt
@@ -187,7 +191,7 @@ function colors::examples
     __printc "$fish_color_param" "hello"
     __printc "normal" " "
     __printc "$fish_color_comment" "# Your Mac will speak"
-    set_color -b normal; printf "\n"
+    __clear_newline
 
     __printc "$desc_color" "\nOperators (like '*' and '~'), Separators (like ';' and '&')\n"
     __dummy_prompt
@@ -198,7 +202,7 @@ function colors::examples
     __printc "normal" " "
     set_color $fish_color_param; set_color $fish_color_valid_path; printf "bar/"
     __printc "$fish_color_end" ";"
-    set_color -b normal; printf "\n"
+    __clear_newline
 
     __printc "$desc_color" "\nRedirection\n"
     __dummy_prompt
@@ -209,13 +213,13 @@ function colors::examples
     __printc "$fish_color_redirection" "2>"
     __printc "normal" " "
     __printc "$fish_color_redirection" "/dev/null"
-    set_color -b normal; printf "\n"
+    __clear_newline
 
     __printc "$desc_color" "\nRoot prompt CWD\n"
     __printc "$fish_color_cwd_root" "/root"
-    __printc normal " # "
+    __printc normal "# "
     __printc "$fish_color_command" "foo"
-    set_color -b normal; printf "\n"
+    __clear_newline
 
     __printc "normal" "\n"
 end
@@ -250,6 +254,7 @@ function colors::variables
     __print_variable "$fish_pager_color_completion" "fish_pager_color_completion"
     __print_variable "$fish_pager_color_description" "fish_pager_color_description"
     __print_variable "$fish_pager_color_progress" "fish_pager_color_progress"
+    __print_variable "$fish_pager_color_secondary" "fish_pager_color_secondary"
     __print_variable "$fish_color_history_current" "fish_color_history_current"
     __print_variable "$fish_color_user" "fish_color_user"
     __print_variable "$fish_color_host" "fish_color_host"
